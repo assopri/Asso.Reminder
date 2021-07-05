@@ -96,6 +96,7 @@
             this.webBrowser1.Size = new System.Drawing.Size(663, 542);
             this.webBrowser1.TabIndex = 5;
             this.webBrowser1.WebBrowserShortcutsEnabled = false;
+            this.webBrowser1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.webBrowser1_PreviewKeyDown);
             // 
             // layoutControlItem2
             // 

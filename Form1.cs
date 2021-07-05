@@ -29,6 +29,10 @@ namespace Asso.Reminder
             labelControl1.Text = CmdArgumentHandler.getCmdArgValue(args, "label");
             string pictureTopic = CmdArgumentHandler.getCmdArgValue(args, "psearch");
 
+//#if DEBUG
+//            pictureTopic = "some picture";
+//#endif
+
             SetPicture(pictureTopic);
 
             //https://supportcenter.devexpress.com/ticket/details/t1006182/barmanager-how-to-drag-a-form-by-clicking-a-bar
@@ -68,12 +72,23 @@ namespace Asso.Reminder
             SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
         }
 
+       
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            ProcessKeydown(e.KeyCode);
+        }
+
+        private void ProcessKeydown(Keys keyCode)
+        {
+            if (keyCode == Keys.Escape)
             {
                 this.Close();
             }
+        }
+
+        private void webBrowser1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            ProcessKeydown(e.KeyCode);
         }
     }
 }
